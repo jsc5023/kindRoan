@@ -8,10 +8,8 @@ Front-End
 Back-End
  - Java 17.0.6[https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html] (higher can be used.)
  - Spring 2.7.1.RELEASE
- - JDK 11. (version 8 or higher can be used.)
- - 
-
-
+ - Gradle
+   
 IDE
  - IntelliJ IDEA 2022.3.1(IDE를 구매하여 썻습니다.)
 
