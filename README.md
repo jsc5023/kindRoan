@@ -6,7 +6,7 @@ Front-End
  - vue.js
 
 Back-End
- - Java 17.0.6[https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html] (higher can be used.)
+ - [Java 17.0.6](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) (higher can be used.)
  - Spring 2.7.1.RELEASE
  - Gradle
    
