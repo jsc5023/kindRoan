@@ -114,8 +114,8 @@ input, button, textarea{
 
 /* 헤더 */
 .header{width: 100%; height: 100%; /* border-bottom: 1px solid #dcdee8; */}
-.header .logo{width: 304px; flex: 0 304px; height: 36px; /* background: khaki; */}
-.header .header-box{width: 100%; height: 160px; /* align-items: center; */ /* background: #dcdee8; */}
+.header .logo{width: 200px; flex: 0 200px; height: 50px; /* background: khaki; */}
+.header .header-box{width: 100%; height: 100px; /* align-items: center; */ /* background: #dcdee8; */}
 .header .nav{ flex: 0 calc(100% - 226px); width: calc(100% - 226px);}
 
 /* 메인 콘텐츠 */
