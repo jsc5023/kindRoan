@@ -22,14 +22,6 @@ public abstract class BaseEntity implements Serializable {
     @Column
     private LocalDateTime appliedAt;
 
-    @CreatedDate
-    @Column(updatable = false)
-    private LocalDateTime createdAt;
-
-    @LastModifiedBy
-    @Column
-    private LocalDateTime updatedAt;
-
     @Column
     private Boolean isDeleted;
 
