@@ -6,24 +6,20 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.TestComponent;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.mockito.BDDMockito.then;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @DisplayName("View 컨트롤러 - 시크릿(권한, 유저 관련) 컨트롤러")
 @Import(SecurityConfig.class)
-@WebMvcTest(SecurityController.EmptyController.class)
-public class SecurityController {
+@WebMvcTest(SecurityControllerTest.EmptyController.class)
+public class SecurityControllerTest {
 
     private final MockMvc mvc;
 
-    SecurityController(@Autowired MockMvc mvc) {
+    SecurityControllerTest(@Autowired MockMvc mvc) {
         this.mvc = mvc;
     }
 
