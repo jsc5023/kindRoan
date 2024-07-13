@@ -1,3 +1,7 @@
 <?xml version="1.0"?>
 <thlogic>
+    <attr sel="#li_sns_login" sec:authorize="!isAuthenticated()"/>
+    <attr sel="#login" sec:authorize="!isAuthenticated()" th:href="@{/security/login}" />
+    <attr sel="#li_sns_logout" sec:authorize="isAuthenticated()"/>
+    <attr sel="#logout" sec:authorize="isAuthenticated()" th:href="@{/logout}"/>
 </thlogic>
