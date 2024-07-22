@@ -3,6 +3,7 @@ package com.example.loan.service;
 import com.example.loan.domain.UserAccount;
 import com.example.loan.dto.UserAccountDto;
 import com.example.loan.repository.UserAccountRepository;
+import com.example.loan.security.UserAccountService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,7 +19,7 @@ import static org.mockito.BDDMockito.then;
 
 @DisplayName("회원 관련 로직")
 @ExtendWith(MockitoExtension.class)
-public class UserAccountService {
+public class UserAccountServiceTest {
 
     @InjectMocks private UserAccountService sut;
 
@@ -33,24 +34,29 @@ public class UserAccountService {
         given(userAccountRepository.save(userAccount)).willReturn(saveUserAccount);
 
         // When
-//        UserAccountDto result = sut.saveUser(
-//                userAccount.getUserId(),
-//                userAccount.getUserPassword(),
-//                userAccount.getEmail(),
-//                userAccount.getNickname(),
-//                userAccount.getMemo()
-//        );
-//
-//        // Then
-//        assertThat(result)
-//                .hasFieldOrPropertyWithValue("userId", userAccount.getUserId())
-//                .hasFieldOrPropertyWithValue("userPassword", userAccount.getUserPassword())
-//                .hasFieldOrPropertyWithValue("email", userAccount.getEmail())
-//                .hasFieldOrPropertyWithValue("nickname", userAccount.getNickname())
-//                .hasFieldOrPropertyWithValue("memo", userAccount.getMemo())
-//                .hasFieldOrPropertyWithValue("createdBy", userAccount.getUserId())
-//                .hasFieldOrPropertyWithValue("modifiedBy", userAccount.getUserId());
-//        then(userAccountRepository).should().save(userAccount);
+        UserAccountDto result = sut.saveUser(
+                userAccount.getUserId(),
+                userAccount.getUserPassword(),
+                userAccount.getEmail(),
+                userAccount.getNickname(),
+                userAccount.getPhoneNumber(),
+                userAccount.getBirth_date(),
+                userAccount.getGender()
+        );
+
+        // Then
+        assertThat(result)
+                .hasFieldOrPropertyWithValue("userId", userAccount.getUserId())
+                .hasFieldOrPropertyWithValue("userPassword", userAccount.getUserPassword())
+                .hasFieldOrPropertyWithValue("email", userAccount.getEmail())
+                .hasFieldOrPropertyWithValue("nickname", userAccount.getNickname())
+                .hasFieldOrPropertyWithValue("phoneNumber", userAccount.getPhoneNumber())
+                .hasFieldOrPropertyWithValue("birth_date", userAccount.getBirth_date())
+                .hasFieldOrPropertyWithValue("gender", userAccount.getGender())
+                .hasFieldOrPropertyWithValue("createdBy", userAccount.getUserId())
+                .hasFieldOrPropertyWithValue("modifiedBy", userAccount.getUserId());
+
+        then(userAccountRepository).should().save(userAccount);
     }
 
     private UserAccount createUserAccount(String username) {
@@ -63,7 +69,7 @@ public class UserAccountService {
                 "password",
                 "e@mail.com",
                 "nickname",
-                "memo",
+                "010-1234-5678",
                 LocalDateTime.now(),
                 'M',
                 createdBy
