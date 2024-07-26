@@ -9,25 +9,21 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.net.URLEncoder;
 
 @Component
 public class CustomAuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
-
-    /* 로그인 인증실패 분기 */
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         int errorCode;
 
         if(exception instanceof BadCredentialsException) {
-            errorCode = 1;
-
+            errorCode = AuthErrorCode.INVALID_CREDENTIALS.getCode();
         } else {
-            errorCode = 99;
+            errorCode = AuthErrorCode.UNKNOWN_ERROR.getCode();
         }
 
-        setDefaultFailureUrl("/security/login?error=true&exception="+ errorCode);
+        setDefaultFailureUrl("/security/login?error="+ errorCode);
 
         super.onAuthenticationFailure(request, response, exception);
     }
