@@ -15,7 +15,14 @@ public class CustomAuthFailureHandler extends SimpleUrlAuthenticationFailureHand
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        int errorCode;
+        int errorCode = findErrorCode(exception);
+
+        request.setAttribute("errorCode", errorCode);
+        request.getRequestDispatcher("/security/login").forward(request, response);
+    }
+
+    private int findErrorCode(AuthenticationException exception) {
+        int errorCode = 0;
 
         if(exception instanceof BadCredentialsException) {
             errorCode = AuthErrorCode.INVALID_CREDENTIALS.getCode();
@@ -23,9 +30,7 @@ public class CustomAuthFailureHandler extends SimpleUrlAuthenticationFailureHand
             errorCode = AuthErrorCode.UNKNOWN_ERROR.getCode();
         }
 
-        setDefaultFailureUrl("/security/login?error="+ errorCode);
-
-        super.onAuthenticationFailure(request, response, exception);
+        return errorCode;
     }
 
 }
