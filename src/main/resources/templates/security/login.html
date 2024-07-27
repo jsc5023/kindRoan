@@ -16,6 +16,10 @@
   </div>
   <form action="/security/loginProc" method="post" class="login-form">
     <h1>로그인</h1>
+    <!-- Error message display -->
+    <div th:if="${errorMessage}" class="alert alert-danger">
+      <p th:text="${errorMessage}"></p>
+    </div>
     <div class="input-group">
       <input type="text" id="username" name="username" required placeholder="아이디">
     </div>

@@ -1,6 +1,7 @@
 package com.example.loan.controller;
 
 import com.example.loan.config.auth.AuthErrorCode;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,16 +12,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UserController {
 
     @GetMapping("/security/login")
-    public String login(@RequestParam(value = "error", required = false) String error,
-                        Model model) {
+    public String login() {
 
-        if(error != null && !error.trim().isEmpty()) {
-            int errorCode = Integer.parseInt(error);
-            String exception = AuthErrorCode.getExplanationByCode(errorCode);
+        return "/security/login";
+    }
 
-            model.addAttribute("error", error);
-            model.addAttribute("exception", exception);
-        }
+    @PostMapping("/security/login")
+    public String loginError(HttpServletRequest request, Model model) {
+        int errorCode = (Integer) request.getAttribute("errorCode");
+        String exception = AuthErrorCode.getExplanationByCode(errorCode);
+
+        model.addAttribute("error", errorCode);
+        model.addAttribute("errorMessage", exception);
 
         return "/security/login";
     }
