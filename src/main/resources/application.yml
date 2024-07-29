@@ -2,4 +2,8 @@ debug: false
 management.endpoints.web.exposure.include: "*"
 
 spring:
+  datasource:
+    url: ${LOCAL_DB_URL}
+    username: ${LOCAL_DB_USERNAME}
+    password: ${LOCAL_DB_PASSWORD}
   thymeleaf3.decoupled-logic: true
