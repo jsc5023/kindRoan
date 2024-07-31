@@ -1,6 +1,12 @@
 debug: false
 management.endpoints.web.exposure.include: "*"
 
+logging:
+  level:
+    com.example.loan: debug
+    org.springframework.web.servlet: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+
 spring:
   datasource:
     url: ${LOCAL_DB_URL}
