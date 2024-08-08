@@ -11,7 +11,7 @@ Front-End
 
 Back-End
 
-![](https://img.shields.io/badge/jdk17-007396?style=flat&logo=jdk&logoColor=white")(higher can be used.)
+![](https://img.shields.io/badge/jdk17-007396?style=flat&logo=jdk&logoColor=white")(jdk17 higher can be used.)
 ![](https://img.shields.io/badge/spring-512BD4?style=flat&logo=spring&logoColor=white")
 ![](https://img.shields.io/badge/gradle-000000?style=flat&logo=gradle&logoColor=white")
    
