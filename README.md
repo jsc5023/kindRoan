@@ -10,9 +10,10 @@ Front-End
 <br/>
 
 Back-End
- - [Java 17.0.6](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) (higher can be used.)
- - Spring 2.7.1.RELEASE
- - Gradle
+
+![](https://img.shields.io/badge/jdk-007396?style=flat&logo=jdk&logoColor=white")(higher can be used.)
+![](https://img.shields.io/badge/spring-512BD4?style=flat&logo=spring&logoColor=white")
+![](https://img.shields.io/badge/gradle-000000?style=flat&logo=gradle&logoColor=white")
    
 IDE
  - IntelliJ IDEA 2022.3.1(IDE를 구매하여 썻습니다.)
