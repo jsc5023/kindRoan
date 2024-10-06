@@ -4,6 +4,8 @@ import com.example.loan.domain.UserAccount;
 import com.example.loan.dto.UserAccountDto;
 import com.example.loan.repository.UserAccountRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +18,9 @@ import java.util.Optional;
 public class UserService {
 
     private final UserAccountRepository userAccountRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Transactional(readOnly = true)
     public Optional<UserAccountDto> searchUser(String username) {

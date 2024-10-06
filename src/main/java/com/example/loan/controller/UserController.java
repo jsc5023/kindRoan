@@ -33,4 +33,18 @@ public class UserController {
     public String signUp() {
         return "/security/sign-up";
     }
+
+    @PostMapping("/security/sign-up")
+        public String signUp(HttpServletRequest request, Model model) {
+        String userId = request.getParameter("userId");
+        String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirm-password");
+        String email = request.getParameter("email");
+
+        if(!password.equals(confirmPassword)) {
+            model.addAttribute("error", "비밀번호와 비밀번호 확인의 내용이 같지 않습니다");
+        }
+
+        return "/security/login";
+    }
 }

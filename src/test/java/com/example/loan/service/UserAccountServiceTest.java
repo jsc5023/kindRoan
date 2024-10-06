@@ -3,7 +3,7 @@ package com.example.loan.service;
 import com.example.loan.domain.UserAccount;
 import com.example.loan.dto.UserAccountDto;
 import com.example.loan.repository.UserAccountRepository;
-import com.example.loan.security.UserAccountService;
+import com.example.loan.service.UserAccountService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
