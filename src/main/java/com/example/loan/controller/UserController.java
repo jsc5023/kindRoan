@@ -45,6 +45,6 @@ public class UserController {
             model.addAttribute("error", "비밀번호와 비밀번호 확인의 내용이 같지 않습니다");
         }
 
-        return "/security/login";
+        return "redirect:/security/login";
     }
 }
