@@ -28,6 +28,11 @@ public class UserService {
                 .map(UserAccountDto::from);
     }
 
+    // userId 중복 검사
+    public boolean isUserIdDuplicate(String userId) {
+        return userAccountRepository.findByUserid(userId) != null;
+    }
+
     public UserAccountDto saveUser(String userId, String userPassword, String email, String nickname, String phoneNumber, LocalDateTime birth_date, char gender) {
         return UserAccountDto.from(
                 userAccountRepository.save(UserAccount.of(userId, userPassword, email, nickname, phoneNumber, birth_date, gender))

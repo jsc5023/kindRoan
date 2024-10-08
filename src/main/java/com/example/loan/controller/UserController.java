@@ -1,7 +1,9 @@
 package com.example.loan.controller;
 
 import com.example.loan.config.auth.AuthErrorCode;
+import com.example.loan.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
+
+    @Autowired
+    static UserService userService;
 
     @GetMapping("/security/login")
     public String login() {
@@ -43,7 +48,14 @@ public class UserController {
 
         if(!password.equals(confirmPassword)) {
             model.addAttribute("error", "비밀번호와 비밀번호 확인의 내용이 같지 않습니다");
+            return "/security/sign-up"; // 실패시 다시 사용자 ID로 이동
         }
+
+        if (userService.isUserIdDuplicate(userId)) {
+            model.addAttribute("error", "이미 존재하는 사용자 ID입니다.");
+            return "/security/sign-up";
+        }
+
 
         return "redirect:/security/login";
     }
