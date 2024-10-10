@@ -7,7 +7,9 @@ import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 @Getter
@@ -32,10 +34,10 @@ public class UserAccount extends AuditingFields {
 
     @Setter @Column(length = 100) private String phoneNumber;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @DateTimeFormat(iso = DateTimeFormatter.ISO_DATE)
     @Setter
     @Column(nullable = false)
-    private LocalDateTime birth_date; // 생성일시
+    private LocalDate birth_date; // 생성일시
 
     @Setter
     @Column(nullable = false, length = 1)
@@ -43,7 +45,7 @@ public class UserAccount extends AuditingFields {
 
     protected UserAccount() {}
 
-    private UserAccount(String userId, String userPassword, String email, String nickname, String phoneNumber, LocalDateTime birth_date, char gender, String createdBy) {
+    private UserAccount(String userId, String userPassword, String email, String nickname, String phoneNumber, LocalDate birth_date, char gender, String createdBy) {
         this.userId = userId;
         this.userPassword = userPassword;
         this.email = email;
@@ -55,11 +57,11 @@ public class UserAccount extends AuditingFields {
         this.modifiedBy = createdBy;
     }
 
-    public static UserAccount of(String userId, String userPassword, String email, String nickname, String phoneNumber, LocalDateTime birth_date, char gender) {
+    public static UserAccount of(String userId, String userPassword, String email, String nickname, String phoneNumber, LocalDate birth_date, char gender) {
         return UserAccount.of(userId, userPassword, email, nickname, phoneNumber, birth_date, gender, null);
     }
 
-    public static UserAccount of(String userId, String userPassword, String email, String nickname, String phoneNumber, LocalDateTime birth_date, char gender, String createdBy) {
+    public static UserAccount of(String userId, String userPassword, String email, String nickname, String phoneNumber, LocalDate birth_date, char gender, String createdBy) {
         return new UserAccount(userId, userPassword, email, nickname, phoneNumber, birth_date, gender, createdBy);
     }
 
