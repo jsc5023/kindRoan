@@ -2,6 +2,7 @@ package com.example.loan.dto;
 
 import com.example.loan.domain.UserAccount;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record UserAccountDto(
@@ -10,18 +11,18 @@ public record UserAccountDto(
         String email,
         String nickname,
         String phoneNumber,
-        LocalDateTime birth_date,
+        LocalDate birth_date,
         char gender,
         LocalDateTime createdAt,
         String createdBy,
         LocalDateTime modifiedAt,
         String modifiedBy
 ){
-    public static UserAccountDto of(String userId, String userPassword, String email, String nickname, String phoneNumber, LocalDateTime birth_date, char gender) {
+    public static UserAccountDto of(String userId, String userPassword, String email, String nickname, String phoneNumber, LocalDate birth_date, char gender) {
         return new UserAccountDto(userId, userPassword, email, nickname, phoneNumber, birth_date, gender, null, null, null, null);
     }
 
-    public static UserAccountDto of(String userId, String userPassword, String email, String nickname, String phoneNumber, LocalDateTime birth_date, char gender, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
+    public static UserAccountDto of(String userId, String userPassword, String email, String nickname, String phoneNumber, LocalDate birth_date, char gender, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
         return new UserAccountDto(userId, userPassword, email, nickname, phoneNumber, birth_date, gender, createdAt, createdBy, modifiedAt, modifiedBy);
     }
 
@@ -32,7 +33,7 @@ public record UserAccountDto(
                 entity.getEmail(),
                 entity.getNickname(),
                 entity.getPhoneNumber(),
-                entity.getBirth_date(),
+                entity.getBirth_date().toLocalDate(),
                 entity.getGender(),
                 entity.getCreatedAt(),
                 entity.getCreatedBy(),

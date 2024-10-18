@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @Controller
 public class UserController {
 
@@ -43,6 +47,11 @@ public class UserController {
         public String signUp(HttpServletRequest request, Model model) {
         String userId = request.getParameter("userId");
         String password = request.getParameter("password");
+        String nickname = request.getParameter("nickname");
+        String phoneNumber = request.getParameter("phoneNumber");
+
+        LocalDate birth_date = LocalDate.parse(request.getParameter("birthdate"), DateTimeFormatter.ISO_DATE);
+        char gender = request.getParameter("birthdate").charAt(0);
         String confirmPassword = request.getParameter("confirm-password");
         String email = request.getParameter("email");
 
@@ -55,6 +64,8 @@ public class UserController {
             model.addAttribute("error", "이미 존재하는 사용자 ID입니다.");
             return "/security/sign-up";
         }
+
+        userService.signUp(userId, password, email, nickname, phoneNumber, birth_date, gender);
 
 
         return "redirect:/security/login";

@@ -34,7 +34,7 @@ public class UserAccount extends AuditingFields {
 
     @Setter @Column(length = 100) private String phoneNumber;
 
-    @DateTimeFormat(iso = DateTimeFormatter.ISO_DATE)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Setter
     @Column(nullable = false)
     private LocalDate birth_date; // 생성일시

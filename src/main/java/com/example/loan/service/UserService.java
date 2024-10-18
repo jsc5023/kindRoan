@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -33,7 +34,7 @@ public class UserService {
         return userAccountRepository.findByUserid(userId) != null;
     }
 
-    public UserAccountDto saveUser(String userId, String userPassword, String email, String nickname, String phoneNumber, LocalDateTime birth_date, char gender) {
+    public UserAccountDto signUp(String userId, String userPassword, String email, String nickname, String phoneNumber, LocalDate birth_date, char gender) {
         return UserAccountDto.from(
                 userAccountRepository.save(UserAccount.of(userId, userPassword, email, nickname, phoneNumber, birth_date, gender))
         );
