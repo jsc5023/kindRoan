@@ -48,7 +48,7 @@ public class UserController {
         String userId = request.getParameter("userId");
         String password = request.getParameter("password");
         String nickname = request.getParameter("nickname");
-        String phoneNumber = request.getParameter("phoneNumber");
+        String phoneNumber = request.getParameter("phone_number");
 
         LocalDate birth_date = LocalDate.parse(request.getParameter("birthdate"), DateTimeFormatter.ISO_DATE);
         char gender = request.getParameter("birthdate").charAt(0);

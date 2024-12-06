@@ -31,7 +31,7 @@ public class UserService {
 
     // userId 중복 검사
     public boolean isUserIdDuplicate(String userId) {
-        return userAccountRepository.findByUserid(userId) != null;
+        return userAccountRepository.findByUserId(userId) != null;
     }
 
     public UserAccountDto signUp(String userId, String userPassword, String email, String nickname, String phoneNumber, LocalDate birth_date, char gender) {

@@ -33,7 +33,7 @@ public record UserAccountDto(
                 entity.getEmail(),
                 entity.getNickname(),
                 entity.getPhoneNumber(),
-                entity.getBirth_date().toLocalDate(),
+                entity.getBirth_date(),
                 entity.getGender(),
                 entity.getCreatedAt(),
                 entity.getCreatedBy(),

@@ -23,7 +23,7 @@ import java.util.Objects;
 @Entity
 public class UserAccount extends AuditingFields {
     @Id
-    @Column(length = 50)
+    @Column(name = "user_id", length = 50)
     String userId;
 
     private @Column(nullable = false) String userPassword;

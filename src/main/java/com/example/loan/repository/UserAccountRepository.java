@@ -4,5 +4,5 @@ import com.example.loan.domain.UserAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserAccountRepository extends JpaRepository<UserAccount, String> {
-    UserAccount findByUserid(String userid);
+    UserAccount findByUserId(String userId);
 }

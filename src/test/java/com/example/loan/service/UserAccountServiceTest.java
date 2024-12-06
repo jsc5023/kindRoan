@@ -3,7 +3,6 @@ package com.example.loan.service;
 import com.example.loan.domain.UserAccount;
 import com.example.loan.dto.UserAccountDto;
 import com.example.loan.repository.UserAccountRepository;
-import com.example.loan.service.UserAccountService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,8 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDateTime;
-
+import java.time.LocalDate;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
@@ -70,7 +68,7 @@ public class UserAccountServiceTest {
                 "e@mail.com",
                 "nickname",
                 "010-1234-5678",
-                LocalDateTime.now(),
+                LocalDate.now(),
                 'M',
                 createdBy
         );
