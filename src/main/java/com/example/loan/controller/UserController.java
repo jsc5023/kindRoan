@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/security/sign-up")
-        public String signUp(HttpServletRequest request, Model model) {
+    public String signUp(HttpServletRequest request, Model model) {
         String userId = request.getParameter("userId");
         String password = request.getParameter("password");
         String nickname = request.getParameter("nickname");
