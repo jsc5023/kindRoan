@@ -33,8 +33,10 @@ public class SecurityConfig  {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests((auth) -> auth
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers(HttpMethod.GET, "/security/*", "/","/index", "/css/**", "/images/**", "/js/**").permitAll()
-                        .anyRequest().authenticated())
+                        .requestMatchers(HttpMethod.GET, "/", "/index", "/security/login", "/security/sign-up").permitAll() // 인증 필요 없는 경로
+                        .requestMatchers(HttpMethod.POST, "/security/sign-up").permitAll() // 회원가입 요청 허용
+                        .anyRequest().authenticated()
+                )
                 .formLogin((formLogin) -> formLogin.loginPage("/security/login")
                         .loginProcessingUrl("/security/loginProc")
                         .failureHandler(customFailureHandler)
